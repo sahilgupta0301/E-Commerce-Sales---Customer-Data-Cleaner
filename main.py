@@ -14,25 +14,25 @@ product_sales = {}
 
 # 5. FOR LOOP: Process each raw record one by one
 for record in raw_records:
-     # STRING SPLIT: Split the string by comma (,) into a list of fields
+ # STRING SPLIT: Split the string by comma (,) into a list of fields
     parts = record.split(",")
-    # STRING CLEANING (.strip() & .title()): Remove extra whitespace and standardize to title case
+# STRING CLEANING (.strip() & .title()): Remove extra whitespace and standardize to title case
     customer_name = parts[0].strip().title()
     product_name = parts[1].strip().title()
-    # TYPE CASTING (int()): Convert the string price into an integer for calculations
+# TYPE CASTING (int()): Convert the string price into an integer for calculations
     price = int(parts[2].strip())
     
-   # SET METHOD (.add()): Add customer name to the set (duplicates are automatically ignored)
+# SET METHOD (.add()): Add customer name to the set (duplicates are automatically ignored)
     unique_customers.add(customer_name)
-    # ASSIGNMENT OPERATOR (+=): Add the current item price to total_revenue
+# ASSIGNMENT OPERATOR (+=): Add the current item price to total_revenue
     total_revenue += price
-    # 6. IF-ELSE CONDITION (Dictionary Update):
-    # Check if the product already exists in the dictionary
+# 6. IF-ELSE CONDITION (Dictionary Update):
+# Check if the product already exists in the dictionary
     if product_name in product_sales:
         product_sales[product_name] += price    # Add price to existing product sales
     else:
         product_sales[product_name] = price      # Create a new entry for the product
-     # F-STRING PRINT: Output the cleaned record for each transaction
+# F-STRING PRINT: Output the cleaned record for each transaction
     print(f"Customer: {customer_name},\nProduct: {product_name},\nPrice: {price}")
 
 # 7. FINAL REPORT (Runs once after the loop completes):
